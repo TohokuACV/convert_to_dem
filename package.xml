@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2" >
+  <name>convert_to_dem</name>
+  <version>0.1.0</version>
+  <description>convert_to_dem package</description>
+
+  <maintainer email="mizuno.naoki@rm.is.tohoku.ac.jp">Naoki Mizuno</maintainer>
+
+  <license>MIT</license>
+
+  <author email="mizuno.naoki@rm.is.tohoku.ac.jp">Naoki Mizuno</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>grid_map</exec_depend>
+</package>

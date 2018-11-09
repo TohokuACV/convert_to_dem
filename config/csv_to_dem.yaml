@@ -1,0 +1,5 @@
+csv:
+  x: path/to/x_file.csv
+  y: path/to/y_file.csv
+  z: path/to/z_file.csv
+resolution: 0.5
