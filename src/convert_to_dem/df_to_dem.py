@@ -3,6 +3,7 @@ from std_msgs.msg import Float32MultiArray, MultiArrayDimension
 from geometry_msgs.msg import Pose
 from grid_map_msgs.msg import GridMap
 
+import numpy as np
 import pandas as pd
 
 
@@ -15,7 +16,7 @@ class DfToDem(object):
         """
         Converts a DataFrame to GridMap
 
-        Convention described in:
+        Convention of the GridMap is described in:
         https://github.com/ANYbotics/grid_map/raw/master/grid_map_core/doc/grid_map_conventions.pdf
 
                           ^
@@ -37,8 +38,9 @@ class DfToDem(object):
         layer = kwargs['layer'] if 'layer' in kwargs else 'elevation'
         origin = kwargs['origin'] if 'origin' in kwargs else None
 
-        grids_x = df.index.get_level_values(1).nunique()
-        grids_y = df.index.get_level_values(0).nunique()
+        grids_x = df['x'].nunique()
+        grids_y = df['y'].nunique()
+        df = df.sort_values(['y', 'x'], ascending=False)
 
         gm = GridMap()
         gm.info.header.frame_id = frame_id
