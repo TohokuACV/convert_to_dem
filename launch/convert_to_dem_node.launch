@@ -3,6 +3,8 @@
   <arg name="x_csv" default="" />
   <arg name="y_csv" default="" />
   <arg name="z_csv" default="" />
+  <arg name="gnss_frame_id" default="" />
+  <arg name="map_frame_id" default="world" />
 
   <node pkg="convert_to_dem" type="text_to_dem.py" name="csv_to_dem" >
     <rosparam command="load" file="$(find convert_to_dem)/config/csv_to_dem.yaml" />
@@ -11,6 +13,8 @@
     <param name="csv/y" value="$(arg y_csv)" />
     <param name="csv/z" value="$(arg z_csv)" />
     <param name="resolution" value="$(arg resolution)" />
+    <param name="gnss_frame_id" value="$(arg gnss_frame_id)" />
+    <param name="map_frame_id" value="$(arg map_frame_id)" />
   </node>
 
   <node pkg="dem_to_occupancy" type="dem_to_occupancy" name="dem_to_occupancy_server" />

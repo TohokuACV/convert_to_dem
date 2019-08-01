@@ -19,12 +19,16 @@ $ rl convert_to_dem convert_to_dem_node.launch \
       x_csv:=${prefix}/x_dem_0.5m_441x555_utm.csv \
       y_csv:=${prefix}/y_dem_0.5m_441x555_utm.csv \
       z_csv:=${prefix}/z_dem_0.5m_441x555_utm.csv \
-      resolution:=0.5
+      resolution:=0.5 \
+      gnss_frame_id:=gps_origin \
+      map_frame_id:=map
 ```
 
 This launches the following nodes:
 
-- `text_to_dem.py`: Converts a text file (in this case, CSV file) into GridMap
+- `text_to_dem.py`: Converts a text file (in this case, CSV file) into
+  GridMap, and publishes the TF transform from GNSS origin (`gps_origin`) to
+  GridMap origin (`map`)
 - `filters_demo`: Filter chain that adds the traversability information to the
   GridMap published by `text_to_dem.py`
 - `dem_to_occupancy`: Spawns a service that converts GridMap to OccupancyGrid

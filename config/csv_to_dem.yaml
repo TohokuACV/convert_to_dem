@@ -3,3 +3,5 @@ csv:
   y: path/to/y_file.csv
   z: path/to/z_file.csv
 resolution: 0.5
+gnss_frame_id: gps_origin
+map_frame_id: map
